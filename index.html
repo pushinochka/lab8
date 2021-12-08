@@ -92,3 +92,29 @@
 </body>
 </html>
 
+ function myfinance(xml) {
+      var x, i, xmlDoc, table;
+      xmlDoc = xml.responseXML;
+      table = "<tr><th>№</th><th>Students</th><th>Grade</th></tr>";
+      x = xmlDoc.getElementsByTagName("gradeRecord");
+      for (i = 0; i < x.length; i++) {
+        var a = x[i].getElementsByTagName("grade")[0].childNodes[0].nodeValue;
+        if (a == 4 || a == 3) {
+          var a = "good"
+        }
+        ;
+        if (a == 2) {
+          var a = "bad"
+        }
+        ;
+        if (a == 5) {
+          var a = "excellent"
+        }
+        ;
+        table += "<tr><td>" + i +
+          "</td><td>" +
+          x[i].getElementsByTagName("student")[0].childNodes[0].nodeValue +
+          "</td><td>" +
+          a +
+          "</td></tr>";
+      }
